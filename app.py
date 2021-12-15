@@ -8,12 +8,12 @@ import dash_html_components as html
 import dash_core_components as dcc
 
 SAS_DISABLE_DATE = datetime(year=2022, month=10, day=1, hour=0)
-STATIC_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets')
+# STATIC_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets')
 
-app = dash.Dash(static_folder='assets')
+app = dash.Dash()
 server = app.server
-app.css.config.serve_locally = True
-app.scripts.config.serve_locally = True
+# app.css.config.serve_locally = True
+# app.scripts.config.serve_locally = True
 
 app.layout = html.Div([
     html.Link(
@@ -31,7 +31,7 @@ app.layout = html.Div([
 
 @app.server.route('/assets/<path:path>')
 def serve_static(path):
-    return flask.send_from_directory(STATIC_PATH, path)
+    return flask.send_from_directory(os.path.join(os.getcwd(), 'assets'), path)
 
 
 @app.callback(Output('sas-message', 'children'),
