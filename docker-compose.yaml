@@ -2,7 +2,7 @@ version: '3.3'
 services:
   dash_app:
     build: .
-    command: gunicorn app:app.server -b 0.0.0.0:8000
+    command: gunicorn app:server -b 0.0.0.0:8000
     expose:
       - 8000
 

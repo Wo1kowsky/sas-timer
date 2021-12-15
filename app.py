@@ -1,6 +1,6 @@
 from datetime import date, time, datetime
 
-import flask
+# import flask
 import dash
 from dash.dependencies import Input, Output, State
 import dash_html_components as html
@@ -8,8 +8,9 @@ import dash_core_components as dcc
 
 SAS_DISABLE_DATE = datetime(year=2022, month=10, day=1, hour=0)
 
-server = flask.Flask(__name__)
-app = dash.Dash(__name__, server=server)
+# server = flask.Flask(__name__)
+app = dash.Dash()
+server = app.server
 
 app.layout = html.Div([
     dcc.Interval(id='timer-interval', interval=60 * 1000, n_intervals=0),
