@@ -12,8 +12,14 @@ STATIC_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets')
 
 app = dash.Dash()
 server = app.server
+app.css.config.serve_locally = True
+app.scripts.config.serve_locally = True
 
 app.layout = html.Div([
+    html.Link(
+        rel='stylesheet',
+        href='/assets/custom.css'
+    ),
     dcc.Interval(id='timer-interval', interval=60 * 1000, n_intervals=0),
     html.Div(className='image'),
     html.Div(id='sas-message', children=[]),
@@ -23,9 +29,9 @@ app.layout = html.Div([
 # рабочих дней
 
 
-@app.server.route('/assets/<resource>')
-def serve_static(resource):
-    return flask.send_from_directory(STATIC_PATH, resource)
+@app.server.route('/assets/<path:path>')
+def serve_static(path):
+    return flask.send_from_directory(STATIC_PATH, path)
 
 
 @app.callback(Output('sas-message', 'children'),
