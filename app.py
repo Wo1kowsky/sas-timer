@@ -46,8 +46,8 @@ def update_disable_message(n):
     else:
         days_word = 'дней'
     return html.Div([html.H1(f'{days_remaining} {days_word}'),
+                     html.H2(f'{days_remaining // 14 - 1} спринтов'),
                      html.H3(f'До отключения SAS')],
-                     # html.H3(f'{(SAS_DISABLE_DATE - current_datetime).days // 14} спринтов')],
                     style={'text-align': 'center'})
 
 
