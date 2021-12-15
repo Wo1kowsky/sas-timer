@@ -1,14 +1,15 @@
 from datetime import date, time, datetime
+import os
 
-# import flask
+import flask
 import dash
 from dash.dependencies import Input, Output, State
 import dash_html_components as html
 import dash_core_components as dcc
 
 SAS_DISABLE_DATE = datetime(year=2022, month=10, day=1, hour=0)
+STATIC_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets')
 
-# server = flask.Flask(__name__)
 app = dash.Dash()
 server = app.server
 
@@ -20,6 +21,11 @@ app.layout = html.Div([
 
 # спринтов
 # рабочих дней
+
+
+@app.server.route('/assets/<resource>')
+def serve_static(resource):
+    return flask.send_from_directory(STATIC_PATH, resource)
 
 
 @app.callback(Output('sas-message', 'children'),
