@@ -1,0 +1,31 @@
+@font-face {
+    font-family: 'SB Sans Display';
+    src: url('./TTF/SBSansDisplay-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: 'SB Sans Text';
+    src: url('./TTF/SBSansText-Medium.ttf');
+}
+
+body {
+    overflow-x: hidden;
+    text-align: center;
+    background-color: black;
+}
+
+H1 {
+    font-family: "SB Sans Display";
+    font-size: 64px;
+    color: white;
+}
+
+H3 {
+    font-family: "SB Sans Text";
+    font-size: 20px;
+    color: white;
+}
+
+image {
+    background-image: url("./logo.png");
+}

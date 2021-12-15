@@ -1,0 +1,17 @@
+version '3.7'
+services:
+  dash_app:
+    build: .
+    commnad: gunicorn app:app.server -b 0.0.0.0:8000
+    expose:
+      -8000
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /etc/certs/:/etc/certs/
+    depends_on:
+      - dash_app
