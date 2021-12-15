@@ -10,7 +10,7 @@ import dash_core_components as dcc
 SAS_DISABLE_DATE = datetime(year=2022, month=10, day=1, hour=0)
 STATIC_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets')
 
-app = dash.Dash()
+app = dash.Dash(static_folder='assets')
 server = app.server
 app.css.config.serve_locally = True
 app.scripts.config.serve_locally = True
